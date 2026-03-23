@@ -111,44 +111,25 @@
   }
 
   .project {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 16px;
     padding: 32px 0;
     border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s ease;
-    position: relative;
-    align-items: start;
     animation: fadeUp 0.6s ease both;
   }
 
   .project:last-child { border-bottom: none; }
 
-  .project::before {
-    content: '';
-    position: absolute;
-    left: -32px;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: var(--text);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.25s ease;
-  }
-
-  .project:hover::before { transform: scaleY(1); }
-  .project:hover .project-name { letter-spacing: -0.01em; }
-
-  .project-left {}
-
   .project-number {
     font-size: 0.7rem;
     color: var(--muted);
-    font-weight: 400;
-    margin-bottom: 10px;
-    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 8px;
+  }
+
+  .project-name-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
   }
 
   .project-name {
@@ -157,97 +138,55 @@
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.2;
-    margin-bottom: 10px;
-    transition: letter-spacing 0.2s ease;
+  }
+
+  .project-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .link-pill:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  .link-pill.muted {
+    color: var(--muted);
+    cursor: default;
+  }
+
+  .link-pill.muted:hover {
+    background: transparent;
+    color: var(--muted);
+    border-color: var(--border);
   }
 
   .project-desc {
     font-size: 0.9rem;
     color: var(--muted);
     line-height: 1.65;
-    max-width: 520px;
+    max-width: 600px;
     margin-bottom: 16px;
   }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--tag-bg);
-    color: var(--muted);
-    padding: 4px 10px;
-    border-radius: 4px;
-  }
-
-  .project-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    padding-top: 28px;
-  }
-
-  .visit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .visit-btn:hover {
-    background: var(--text);
-    color: var(--bg);
-    border-color: var(--text);
-  }
-
-  .visit-btn svg {
-    width: 10px; height: 10px;
-    transition: transform 0.2s ease;
-  }
-
-  .visit-btn:hover svg { transform: translate(2px, -2px); }
-
-  .status {
-    font-size: 0.68rem;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .status-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #22c55e;
-    display: inline-block;
-  }
-
-  .status-dot.offline {
-    background: var(--muted);
-  }
-
-  /* ── CONTENT AGENT SPECIAL ── */
-  .project.no-link { cursor: default; }
-  .project.no-link::before { display: none; }
 
   /* ── FOOTER ── */
   footer {
@@ -331,116 +270,78 @@
     <div class="projects">
 
       <!-- 01 SkillUp -->
-      <a class="project" href="https://skillup-xi.vercel.app/" target="_blank" rel="noopener">
-        <div class="project-left">
-          <div class="project-number">01</div>
+      <div class="project">
+        <div class="project-number">01</div>
+        <div class="project-name-row">
           <h2 class="project-name">SkillUp</h2>
-          <p class="project-desc">A full-stack career growth platform with collaborative networking, Kanban project management, portfolio builder, mentorship matching, and real-time job market insights. Built with auth, tiered pricing, and a complete SaaS infrastructure.</p>
-          <div class="tags">
-            <span class="tag">Career Platform</span>
-            <span class="tag">SaaS</span>
-            <span class="tag">Full Stack</span>
-            <span class="tag">Mentorship</span>
+          <div class="project-links">
+            <a class="link-pill" href="https://skillup-xi.vercel.app/" target="_blank" rel="noopener"><span class="status-dot"></span> Live</a>
+            <a class="link-pill" href="https://github.com/Ashwini7506/skillup" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
-        <div class="project-right">
-          <span class="status"><span class="status-dot"></span> Live</span>
-          <span class="visit-btn">
-            Visit
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <a class="visit-btn" href="https://github.com/Ashwini7506/skillup" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-            GitHub
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <p class="project-desc">A full-stack career growth platform with collaborative networking, Kanban project management, portfolio builder, mentorship matching, and real-time job market insights. Built with auth, tiered pricing, and a complete SaaS infrastructure.</p>
+        <div class="tags">
+          <span class="tag">Career Platform</span>
+          <span class="tag">SaaS</span>
+          <span class="tag">Full Stack</span>
+          <span class="tag">Mentorship</span>
         </div>
-      </a>
+      </div>
 
       <!-- 02 Lila VIZ -->
-      <a class="project" href="https://lila-black.vercel.app/" target="_blank" rel="noopener">
-        <div class="project-left">
-          <div class="project-number">02</div>
+      <div class="project">
+        <div class="project-number">02</div>
+        <div class="project-name-row">
           <h2 class="project-name">Lila VIZ</h2>
-          <p class="project-desc">A level design visualizer a creative tool for mapping, visualizing, and iterating on game level layouts. Built for designers and developers who think spatially.</p>
-          <div class="tags">
-            <span class="tag">Visualizer</span>
-            <span class="tag">Game Design</span>
-            <span class="tag">Creative Tool</span>
+          <div class="project-links">
+            <a class="link-pill" href="https://lila-black.vercel.app/" target="_blank" rel="noopener"><span class="status-dot"></span> Live</a>
+            <a class="link-pill" href="https://github.com/Ashwini7506/lila-black" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
-        <div class="project-right">
-          <span class="status"><span class="status-dot"></span> Live</span>
-          <span class="visit-btn">
-            Visit
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <a class="visit-btn" href="https://github.com/Ashwini7506/lila-black" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-            GitHub
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <p class="project-desc">A level design visualizer a creative tool for mapping, visualizing, and iterating on game level layouts. Built for designers and developers who think spatially.</p>
+        <div class="tags">
+          <span class="tag">Visualizer</span>
+          <span class="tag">Game Design</span>
+          <span class="tag">Creative Tool</span>
         </div>
-      </a>
+      </div>
 
       <!-- 03 Retention Agent -->
-      <a class="project" href="https://retention-agent.vercel.app/" target="_blank" rel="noopener">
-        <div class="project-left">
-          <div class="project-number">03</div>
+      <div class="project">
+        <div class="project-number">03</div>
+        <div class="project-name-row">
           <h2 class="project-name">FunnelMind Retention Agent</h2>
-          <p class="project-desc">An AI-powered growth & retention intelligence tool built for OutX.AI. Tracks full-funnel drop-offs, scores churn risk live using a 4-signal model (funnel stage, recency, engagement depth, plan type), and uses Claude to draft personalised re-engagement emails.</p>
-          <div class="tags">
-            <span class="tag">AI Agent</span>
-            <span class="tag">Retention</span>
-            <span class="tag">Analytics</span>
-            <span class="tag">Churn Prediction</span>
+          <div class="project-links">
+            <a class="link-pill" href="https://retention-agent.vercel.app/" target="_blank" rel="noopener"><span class="status-dot"></span> Live</a>
+            <a class="link-pill" href="https://github.com/Ashwini7506/retention-agent" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
-        <div class="project-right">
-          <span class="status"><span class="status-dot"></span> Live</span>
-          <span class="visit-btn">
-            Visit
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <a class="visit-btn" href="https://github.com/Ashwini7506/retention-agent" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-            GitHub
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <p class="project-desc">An AI-powered growth & retention intelligence tool built for OutX.AI. Tracks full-funnel drop-offs, scores churn risk live using a 4-signal model (funnel stage, recency, engagement depth, plan type), and uses Claude to draft personalised re-engagement emails.</p>
+        <div class="tags">
+          <span class="tag">AI Agent</span>
+          <span class="tag">Retention</span>
+          <span class="tag">Analytics</span>
+          <span class="tag">Churn Prediction</span>
         </div>
-      </a>
+      </div>
 
       <!-- 04 Content Agent -->
-      <div class="project no-link">
-        <div class="project-left">
-          <div class="project-number">04</div>
+      <div class="project">
+        <div class="project-number">04</div>
+        <div class="project-name-row">
           <h2 class="project-name">Content Agent</h2>
-          <p class="project-desc">A cron-triggered AI content pipeline hosted on Railway. Every day at 12pm IST, it researches keywords and intent across Reddit, LinkedIn, Twitter, YouTube, and Substack generates a full week of platform-specific content, aggregates engagement data from previous posts, runs analysis on what worked vs. what didn't, and delivers a Slack summary with actionable suggestions.</p>
-          <div class="tags">
-            <span class="tag">AI Pipeline</span>
-            <span class="tag">Content Strategy</span>
-            <span class="tag">Multi-Platform</span>
-            <span class="tag">Railway</span>
-            <span class="tag">Slack Integration</span>
+          <div class="project-links">
+            <span class="link-pill muted"><span class="status-dot offline"></span> Internal</span>
+            <a class="link-pill" href="https://github.com/Ashwini7506/outx-content-agent" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
-        <div class="project-right">
-          <span class="status"><span class="status-dot offline"></span> Internal</span>
-          <a class="visit-btn" href="https://github.com/Ashwini7506/outx-content-agent" target="_blank" rel="noopener">
-            GitHub
-            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <p class="project-desc">A cron-triggered AI content pipeline hosted on Railway. Every day at 12pm IST, it researches keywords and intent across Reddit, LinkedIn, Twitter, YouTube, and Substack generates a full week of platform-specific content, aggregates engagement data from previous posts, runs analysis on what worked vs. what didn't, and delivers a Slack summary with actionable suggestions.</p>
+        <div class="tags">
+          <span class="tag">AI Pipeline</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Multi-Platform</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Slack Integration</span>
         </div>
       </div>
 
